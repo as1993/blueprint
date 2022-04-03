@@ -133,6 +133,15 @@ Blueprint is a new Project Management tool. It can be thought of as a new-age JI
 | `id`      | `long` | **Required**. Id of the user to delete |
 
 
+## Screenshots
+
+![Create User Story](/src/main/resources/static/screenshots/CREATE_User-Story.jpg?raw=true)
+![Get all user stories](/src/main/resources/static/screenshots/GET_all_user-stories.jpg?raw=true)
+![Update user story](/src/main/resources/static/screenshots/UPDATE_user-story.jpg?raw=true)
+![Create new task](/src/main/resources/static/screenshots/CREATE_new_task.jpg?raw=true)
+![Delete task](/src/main/resources/static/screenshots/DELETE_task.jpg?raw=true)
+![Get all users](/src/main/resources/static/screenshots/GET_all_users.jp?raw=true)
+![Create New User](/src/main/resources/static/screenshots/CREATE_new_user.jpg?raw=true)
 
 ## License
 
