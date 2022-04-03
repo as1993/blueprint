@@ -12,7 +12,7 @@ Blueprint is a new Project Management tool. It can be thought of as a new-age JI
 
 - Clone the code to your machine.
 - ```cd``` to the root of the project and run ```gradle build```
-- You can run the prject in the embedded tomact inside your IDE and run the ```jar``` inside the ```build/libs/``` directory.
+- You can run the project in the embedded tomcat inside your IDE and run the ```jar``` inside the ```build/libs/``` directory.
 ## API Reference
 
 ### 1. User Story
