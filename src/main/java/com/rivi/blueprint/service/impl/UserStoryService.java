@@ -42,13 +42,14 @@ public class UserStoryService implements IUserStoryService {
 
 	@Override
 	public UserStory createUserStory(UserStoryRequestDto storyDto) {
-		validateUserStoryRequest(storyDto);
+		validateUserStoryCreateRequest(storyDto);
 		UserStory story = mapDtoToEntity(storyDto);
 		return userStoryRepository.save(story);
 	}
 
 	@Override
 	public UserStory updateUserStory(Long userStoryId, UserStoryRequestDto newStory) {
+		validateUserStoryUpdateRequest(newStory);
 		UserStory story = userStoryRepository.findById(userStoryId).orElseThrow(
 				() -> new UserStoryNotFoundException("User Story with id " + userStoryId + " does not exists!"));
 
@@ -76,12 +77,27 @@ public class UserStoryService implements IUserStoryService {
 		}
 	}
 
-	private void validateUserStoryRequest(UserStoryRequestDto storyDto) {
+	private void validateUserStoryCreateRequest(UserStoryRequestDto storyDto) {
 		if (!StringUtils.hasLength(storyDto.getTitle())) {
 			throw new BadRequestException("Story Title cannot be empty!");
 		}
 		if (storyDto.getCompletionDate() != null && LocalDate.now().isAfter(storyDto.getCompletionDate())) {
 			throw new BadRequestException("Completion date is in the past!");
+		}
+		if (storyDto.getUserId() != null) {
+			userRepository.findById(storyDto.getUserId()).orElseThrow(UserNotFoundException::new);
+		}
+	}
+
+	private void validateUserStoryUpdateRequest(UserStoryRequestDto storyDto) {
+		if (storyDto.getTitle() != null && storyDto.getTitle().isEmpty()) {
+			throw new BadRequestException("Story Title cannot be empty!");
+		}
+		if (storyDto.getCompletionDate() != null && LocalDate.now().isAfter(storyDto.getCompletionDate())) {
+			throw new BadRequestException("Completion date is in the past!");
+		}
+		if (storyDto.getUserId() != null) {
+			userRepository.findById(storyDto.getUserId()).orElseThrow(UserNotFoundException::new);
 		}
 	}
 
@@ -105,8 +121,10 @@ public class UserStoryService implements IUserStoryService {
 		}
 
 		if (dto.getUserId() != null) {
-			User user = userRepository.findById(dto.getUserId()).orElseThrow(UserNotFoundException::new);
-			userStory.setAssignee(user);
+			Optional<User> user = userRepository.findById(dto.getUserId());
+			if (user.isPresent()) {
+				userStory.setAssignee(user.get());
+			}
 		}
 
 		return userStory;

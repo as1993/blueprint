@@ -126,6 +126,33 @@ class UserStoryServiceTest {
 	}
 
 	@Test
+	void updateUserStory_invalidRequest() {
+		UserStory story = getSampleUserStory();
+		UserStoryRequestDto dto = new UserStoryRequestDto();
+		BeanUtils.copyProperties(story, dto);
+
+		dto.setCompletionDate(LocalDate.now().minusDays(1));
+
+		assertThrows(BadRequestException.class, () -> userStoryService.updateUserStory(1L, dto));
+
+		dto.setCompletionDate(LocalDate.now().plusDays(1));
+		dto.setTitle("");
+
+		assertThrows(BadRequestException.class, () -> userStoryService.updateUserStory(1L, dto));
+	}
+
+	@Test
+	void updateUserStory_userDoesNotExists() {
+		UserStory story = getSampleUserStory();
+		UserStoryRequestDto dto = new UserStoryRequestDto();
+		BeanUtils.copyProperties(story, dto);
+
+		dto.setUserId(1L);
+		Mockito.when(userRepository.findById(dto.getUserId())).thenReturn(Optional.empty());
+		assertThrows(UserNotFoundException.class, () -> userStoryService.updateUserStory(1L, dto));
+	}
+
+	@Test
 	void deleteUserStory_storyExists() {
 		UserStory story = getSampleUserStory();
 		Mockito.when(userStoryRepository.findById(Mockito.anyLong())).thenReturn(Optional.ofNullable(story));
