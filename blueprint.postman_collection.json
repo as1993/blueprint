@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "49974c90-c029-474a-beba-bfccc3997a5e",
+		"name": "Blueprint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Story",
+			"item": [
+				{
+					"name": "Get all User Stories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{user_stories_endpoint}}",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{user_stories_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User Story",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Story1\",\n    \"description\": \"Description1\",\n    \"completionDate\": \"2022-06-07\",\n    \"userId\": 1,\n    \"stateId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{user_stories_endpoint}}",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{user_stories_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Story by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{user_stories_endpoint}}/1",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{user_stories_endpoint}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Story",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"StoryNew\",\n    \"description\": \"DescriptionNew\",\n    \"stateId\": 4,\n    \"completionDate\": \"2023-09-05\",\n    \"userId\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{user_stories_endpoint}}/1",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{user_stories_endpoint}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Story",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{user_stories_endpoint}}/1",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{user_stories_endpoint}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Task1\",\n    \"description\": \"Description1\",\n    \"userId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{tasks_endpoint}}/1",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{tasks_endpoint}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{tasks_endpoint}}/2",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{tasks_endpoint}}",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Tasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{tasks_endpoint}}",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{tasks_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User3\",\n    \"email\": \"user3@rivi.com\",\n    \"userTypeId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{users_endpoint}}",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{users_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{users_endpoint}}/1",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{users_endpoint}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{users_endpoint}}/1",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{users_endpoint}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_endpoint}}/{{users_endpoint}}",
+							"host": [
+								"{{base_endpoint}}"
+							],
+							"path": [
+								"{{users_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7ad61012-3176-4e8f-ae2a-6622de97989e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a8e42c1a-db3c-4f05-8cdd-12f1b8b1bd3e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c2f13247-9663-41c3-b870-65dc35c5a04f",
+			"key": "base_endpoint",
+			"value": "http://localhost:8080"
+		},
+		{
+			"id": "6ddaa0c0-d13d-4fae-b705-e8eb32d0a8e9",
+			"key": "user_stories_endpoint",
+			"value": "api/v1/userstories"
+		},
+		{
+			"id": "9419a8be-7031-41e9-b53b-56211ac4de12",
+			"key": "tasks_endpoint",
+			"value": "api/v1/tasks"
+		},
+		{
+			"id": "f794d399-c375-46d5-9d1b-9701a453391f",
+			"key": "users_endpoint",
+			"value": "api/v1/users"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
