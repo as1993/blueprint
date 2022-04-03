@@ -18,6 +18,8 @@ import org.springframework.beans.BeanUtils;
 import com.rivi.blueprint.dto.UserRequestDto;
 import com.rivi.blueprint.entity.User;
 import com.rivi.blueprint.enums.UserType;
+import com.rivi.blueprint.exception.BadRequestException;
+import com.rivi.blueprint.exception.DuplicateUserException;
 import com.rivi.blueprint.exception.UserNotFoundException;
 import com.rivi.blueprint.repository.UserRepository;
 
@@ -64,6 +66,24 @@ class UserServiceTest {
 	}
 
 	@Test
+	void createUser_noName() {
+		assertThrows(BadRequestException.class, () -> userService.createUser(new UserRequestDto("", "email@rivi.com")));
+	}
+
+	@Test
+	void createUser_noEmail() {
+		assertThrows(BadRequestException.class, () -> userService.createUser(new UserRequestDto("Name", "")));
+	}
+
+	@Test
+	void createUser_duplicateUser() {
+		User user = getSampleUser();
+		Mockito.when(userRepository.findByEmail(Mockito.anyString())).thenReturn(Optional.ofNullable(user));
+		assertThrows(DuplicateUserException.class,
+				() -> userService.createUser(new UserRequestDto("Name", "email@rivi.com")));
+	}
+
+	@Test
 	void deleteUser_userExists() {
 		User user = getSampleUser();
 		Mockito.when(userRepository.findById(Mockito.anyLong())).thenReturn(Optional.ofNullable(user));
@@ -84,7 +104,9 @@ class UserServiceTest {
 		User user = new User();
 		user.setId(1L);
 		user.setName("Test User");
+		user.setEmail("test@rivi.com");
 		user.setType(UserType.DEVELOPER);
 		return user;
 	}
 }
+
